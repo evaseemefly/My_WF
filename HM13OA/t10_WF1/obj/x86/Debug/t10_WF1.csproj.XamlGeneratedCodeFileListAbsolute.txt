@@ -1,0 +1,4 @@
+obj\x86\Debug\_t10_WF1.g.cs
+obj\x86\Debug\Workflow1.g.cs
+obj\x86\Debug\t10_WF1_Workflow1_BeforeInitializeComponentHelper.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF1\obj\x86\Debug\t10_WF1_Workflow1_CompiledExpressionRoot.cs

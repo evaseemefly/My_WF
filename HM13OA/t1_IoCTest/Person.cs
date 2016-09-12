@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace t1_IoCTest
+{
+    //说明：如果需要使用IoC，前提是这个类及使用这个类的地方，不在同一个程序集中
+
+    public interface IPerson
+    {
+        void Say();
+    }
+
+    public partial class Person:IPerson
+    {
+        //constructor
+        public Person()
+        {
+            
+        }
+
+        public Person(string name)
+        {
+            Name = name;
+        }
+
+        public Person(int age)
+        {
+            Age = age;
+        }
+
+        public Person(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public Car MyCar { get; set; }
+
+        public List<Car> MyCarList { get; set; } 
+
+        public void Say()
+        {
+            //Console.WriteLine("Hello {0},MyCar Brand:{1}",Name,MyCar.Brand);
+            foreach (var item in MyCarList)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+
+    public class Car
+    {
+        public string Brand { get; set; }
+        public override string ToString()
+        {
+            return Brand;
+        }
+    }
+}

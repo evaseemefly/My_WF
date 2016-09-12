@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+@using lshOA.MODEL
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowEditInfo</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript">
+        function subEditForm() {
+            $("#form1").submit();
+        
+        }
+        function afterSetRole() {
+            window.parent.afterSetRole();
+        }
+        //function afterSetRole() {
+        //    window.parent.afterEdit();
+        //}
+    </script>
+</head>
+<body>
+    <div> 
+        为权限@{ActionInfo actionInfo = (ActionInfo)ViewBag.ActionInfo;
+                <span style="font-size:16px;color:red">@actionInfo.ActionInfoName</span>
+        }分配权限   
+        
+        @using (Ajax.BeginForm("SetActionRole",new { }, new AjaxOptions() { OnSuccess = "afterSetRole",HttpMethod="post" }, new { id = "form1" }))
+        {
+            //获取指定 权限 对应的 角色
+            //保存权限id
+            <input type="hidden" name="actionId" value="@actionInfo.ID" />
+            //获取所有的角色集合
+            List<RoleInfo> AllRoleList = (List<RoleInfo>)ViewBag.AllRoles;
+            //获取当前 权限 所拥有的 角色信息集合
+            List<int> RoleIdList = (List<int>)ViewBag.AllExtRoleIds;
+            foreach(var roleInfo in AllRoleList)
+            {
+                var name = "cba_" + roleInfo.ID;
+                //若当前 权限 所拥有 的 角色
+                if(RoleIdList.Contains(roleInfo.ID))
+                {
+                    <input type="checkbox" checked="checked" name="@name" value="@roleInfo.ID" />@roleInfo.RoleName
+                }
+                else
+                {
+                    <input type="checkbox" name="@name" value="@roleInfo.ID" />@roleInfo.RoleName
+                }
+            }
+        }
+    </div>
+</body>
+</html>

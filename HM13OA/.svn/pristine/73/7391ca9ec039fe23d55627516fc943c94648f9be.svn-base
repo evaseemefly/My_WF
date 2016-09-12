@@ -1,0 +1,30 @@
+﻿@model IQueryable<HM13OA.Model.WorkFlowModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        li {
+            float: left;
+            padding-right: 5px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@Html.ActionLink(item.ModelTitle,item.ActionName,item.ControllerName)</li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

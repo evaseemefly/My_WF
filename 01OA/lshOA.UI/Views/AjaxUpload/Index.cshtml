@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>角色管理</title>
+    
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+   
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    
+    <script src="~/Scripts/ajaxfileupload.js"></script>*@
+    @*<script src="~/Scripts/Ajax/jquery-1.7.1.js"></script>*@
+    <script src="~/Scripts/Ajax/ajaxfileupload.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#uploadByAjax").click(function () {
+                if ($("#imgIcon").val().length > 0) {
+                    ajaxFileUpload();
+                }
+                else {
+                    alert("请选择图片");
+                }
+            })
+        })
+        function ajaxFileUpload() {
+            $.ajaxFileUpload
+            (
+                {
+                    url: '/AjaxUpload/GetMenuIcon', //用于文件上传的服务器端请求地址
+                    secureuri: false, //一般设置为false
+                    fileElementId: 'imgIcon', //文件上传空间的id属性  <input type="file" id="file" name="file" />
+                    dataType: 'json', //返回值类型 一般设置为json
+                    success: function (data, status)  //服务器成功响应处理函数
+                    {
+                        if(data)
+                        {
+                            alert(data.state);
+                            alert(data.imgName);
+                        }
+                        //alert(data.imgName);
+                        //$("#img1").attr("src", data);
+                        //if (typeof (data.error) != 'undefined') {
+                        //    if (data.error != '') {
+                        //        alert(data.error);
+                        //    } else {
+                        //        alert(data.msg);
+                        //    }
+                        //}
+                    },
+                    error: function (data, status, e)//服务器响应失败处理函数
+                    {
+                        alert(e);
+                    }
+                }
+            )
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input type="file" name="imgIcon1" id="imgIcon" />
+        <input type="button" id="uploadByAjax" value="上传" />
+    </div>
+</body>
+</html>

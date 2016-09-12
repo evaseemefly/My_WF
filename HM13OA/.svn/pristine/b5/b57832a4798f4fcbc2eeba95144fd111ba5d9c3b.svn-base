@@ -1,0 +1,36 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using HM13OA.IDAL;
+using HM13OA.Model;
+
+namespace HM13OA.DAL
+{
+    public partial class UserInfoDal : BaseDal<UserInfo>,IUserInfoDal
+    {
+	}
+    public partial class RoleInfoDal : BaseDal<RoleInfo>,IRoleInfoDal
+    {
+	}
+    public partial class ActionInfoDal : BaseDal<ActionInfo>,IActionInfoDal
+    {
+	}
+    public partial class UserActionDal : BaseDal<UserAction>,IUserActionDal
+    {
+	}
+    public partial class WorkFlowModelDal : BaseDal<WorkFlowModel>,IWorkFlowModelDal
+    {
+	}
+    public partial class WorkflowInstanceDal : BaseDal<WorkflowInstance>,IWorkflowInstanceDal
+    {
+	}
+    public partial class WorkflowStepDal : BaseDal<WorkflowStep>,IWorkflowStepDal
+    {
+	}
+}

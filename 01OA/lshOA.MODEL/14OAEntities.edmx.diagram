@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72129103b0b44fd29f013d7a7798c8ec" Name="Diagram1">
+        <EntityTypeShape EntityType="OAModel.ActionInfo" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.Department" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.FileInfo" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.OrderInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.R_UserInfo_ActionInfo" Width="1.5" PointX="7.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.RoleInfo" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.UserInfo" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.WF_Instance" Width="1.5" PointX="10" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.WF_StepInfo" Width="1.5" PointX="12.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="OAModel.WF_Temp" Width="1.5" PointX="7.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="OAModel.FK_ActionInfoR_UserInfo_ActionInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.FK_UserInfoR_UserInfo_ActionInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.FK_WF_InstanceWF_StepInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.FK_WF_TempWF_Instance" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.DepartmentActionInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.RoleInfoActionInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.UserInfoDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="OAModel.UserInfoRoleInfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OAModel.sysdiagrams" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="OAModel.Book" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

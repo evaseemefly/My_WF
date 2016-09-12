@@ -1,0 +1,9 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\bin\Debug\t1_IoCTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\bin\Debug\t1_IoCTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\bin\Debug\t1_IoCTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\bin\Debug\Common.Logging.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\bin\Debug\Spring.Core.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\bin\Debug\Spring.Core.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\obj\Debug\t1_IoCTest.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\obj\Debug\t1_IoCTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t1_IoCTest\obj\Debug\t1_IoCTest.pdb

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<local:Workflow1 xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:local="clr-namespace:t10_WF1;assembly=t10_WF1" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>t10_WF1</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <local:Workflow1.Implementation>
+    <Sequence>
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Int32" Name="Num1" />
+        <Variable x:TypeArguments="x:Int32" Name="Num2" />
+      </Sequence.Variables>
+      <WriteLine Text="请输入第一个数：" />
+      <local:Input>
+        <local:Input.Num>
+          <OutArgument x:TypeArguments="x:Int32">
+            <mca:CSharpReference x:TypeArguments="x:Int32">Num1</mca:CSharpReference>
+          </OutArgument>
+        </local:Input.Num>
+      </local:Input>
+      <WriteLine Text="请输入第二个数：" />
+      <local:Input>
+        <local:Input.Num>
+          <OutArgument x:TypeArguments="x:Int32">
+            <mca:CSharpReference x:TypeArguments="x:Int32">Num2</mca:CSharpReference>
+          </OutArgument>
+        </local:Input.Num>
+      </local:Input>
+      <local:Calc>
+        <local:Calc.Num1>
+          <InArgument x:TypeArguments="x:Int32">
+            <mca:CSharpValue x:TypeArguments="x:Int32">Num1</mca:CSharpValue>
+          </InArgument>
+        </local:Calc.Num1>
+        <local:Calc.Num2>
+          <InArgument x:TypeArguments="x:Int32">
+            <mca:CSharpValue x:TypeArguments="x:Int32">Num2</mca:CSharpValue>
+          </InArgument>
+        </local:Calc.Num2>
+      </local:Calc>
+      <Delay Duration="00:00:05" />
+      <sads:DebugSymbol.Symbol>9xDpzDNoZK4RfTXJDfkADnqCO0M6XFVzZXJzXHExXERlc2t0b3BcMjAxNC03LTE1XEhNMTNPQVx0MTBfV0YxXFdvcmtmbG93MS54YW1sDiYDSQ4CAQErBStQAgEVLAUyEwIBETMFM1ACAQ80BToTAgELOwVGEgIBBEcFR0wCAQIrQytNAgEWLwsvVAIBEjNDM00CARA3CzdUAgEMPgs+TAIBCEMLQ0wCAQVHFUcfAgED</sads:DebugSymbol.Symbol>
+    </Sequence>
+  </local:Workflow1.Implementation>
+</local:Workflow1>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<local:Activity1 xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="clr-namespace:WWF;assembly=WWF" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Threading</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Deployment</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Net.Http</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WWF</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <local:Activity1.Implementation>
+    <StateMachine>
+      <StateMachine.InitialState>
+        <State x:Name="__ReferenceID0" DisplayName="State1">
+          <State.Entry>
+            <Sequence>
+              <Sequence>
+                <Assign>
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">
+                      <mca:CSharpReference x:TypeArguments="x:Int32">Num</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">-1</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <WriteLine Text="进入状态1" />
+                <WriteLine>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">"当前时间"+InputDateTime</mca:CSharpValue>
+                  </InArgument>
+                </WriteLine>
+              </Sequence>
+              <WriteLine>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">"子线程"+Thread.CurrentThread.ManagedThreadId.ToString()</mca:CSharpValue>
+                </InArgument>
+              </WriteLine>
+              <local:Wait4BookMark Text="{x:Null}">
+                <local:Wait4BookMark.BookMarkName>
+                  <InArgument x:TypeArguments="x:String">
+                    <mca:CSharpValue x:TypeArguments="x:String">TempBookMark</mca:CSharpValue>
+                  </InArgument>
+                </local:Wait4BookMark.BookMarkName>
+                <local:Wait4BookMark.Num>
+                  <OutArgument x:TypeArguments="x:Int32">
+                    <mca:CSharpReference x:TypeArguments="x:Int32">Num</mca:CSharpReference>
+                  </OutArgument>
+                </local:Wait4BookMark.Num>
+              </local:Wait4BookMark>
+            </Sequence>
+          </State.Entry>
+          <State.Exit>
+            <WriteLine Text="退出状态1" />
+          </State.Exit>
+          <State.Transitions>
+            <Transition DisplayName="T1">
+              <Transition.Trigger>
+                <Sequence>
+                  <Sequence>
+                    <WriteLine Text="进入T1" />
+                  </Sequence>
+                </Sequence>
+              </Transition.Trigger>
+              <Transition.To>
+                <State x:Name="__ReferenceID1" DisplayName="State2">
+                  <State.Entry>
+                    <WriteLine Text="进入状态2" />
+                  </State.Entry>
+                  <State.Exit>
+                    <WriteLine Text="退出状态2" />
+                  </State.Exit>
+                  <State.Transitions>
+                    <Transition DisplayName="T2">
+                      <Transition.To>
+                        <State x:Name="__ReferenceID2" DisplayName="FinalState" IsFinal="True">
+                          <State.Entry>
+                            <Sequence>
+                              <WriteLine Text="进入Final" />
+                              <WriteLine Text="流程结束" />
+                            </Sequence>
+                          </State.Entry>
+                        </State>
+                      </Transition.To>
+                    </Transition>
+                  </State.Transitions>
+                </State>
+              </Transition.To>
+              <Transition.Action>
+                <Sequence>
+                  <WriteLine Text="执行T1中的Action" />
+                  <WriteLine>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">"输入的Num为"+Num+"，大于5，进入状态2"</mca:CSharpValue>
+                    </InArgument>
+                  </WriteLine>
+                </Sequence>
+              </Transition.Action>
+              <Transition.Condition>
+                <mca:CSharpValue x:TypeArguments="x:Boolean">Num&gt;5</mca:CSharpValue>
+              </Transition.Condition>
+            </Transition>
+            <Transition DisplayName="T3" To="{x:Reference __ReferenceID0}">
+              <Transition.Action>
+                <WriteLine Text="传入的Num小于2返回状态1" />
+              </Transition.Action>
+              <Transition.Condition>
+                <mca:CSharpValue x:TypeArguments="x:Boolean">Num&lt;2&amp;&amp;Num!=-1</mca:CSharpValue>
+              </Transition.Condition>
+            </Transition>
+          </State.Transitions>
+        </State>
+      </StateMachine.InitialState>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <StateMachine.Variables>
+        <Variable x:TypeArguments="x:Int32" Name="Num" />
+      </StateMachine.Variables>
+      <sads:DebugSymbol.Symbol>dzhEOlwwMue8lueoi1wyMDE25bm0XDAx5Y2P5ZCM5byA5Y+RXFdGXFdXRlxBY3Rpdml0eTEueGFtbCoyA6ABEgIBATQHlwEPAgEQaQ9+FwIBCXMXeh8CAQI2C1oWAgErXQtdUwIBKWIPZhoCASWLAQ+LAVYCASGBAQ+IARoCARmTAQ+TAWcCARSQAQ+QAWECARJrE2tbAgEObhNuWwIBDHUbeCYCAQQ3DUgYAgE6SQ1NGQIBNU4NWSMCASxdSV1QAgEqYxFlHAIBJoIBEYIBYAIBH4MBEYcBHQIBGpABTpABXgIBE2tRa1gCAQ9uUW5YAgENdh12aAIBB3cdd2UCAQU4D0EYAgFCQg9CVwIBQEMPRxsCATtLEUuEAQIBNlYTVlsCATFRE1FdAgEtZBNkWgIBJ4IBT4IBXQIBIIUBFYUBbQIBG3ZcdmUCAQh3XHdiAgEGPzk/OwIBRzsVO10CAUNCTUJUAgFBRRNFZQIBPGRRZFcCASg=</sads:DebugSymbol.Symbol>
+    </StateMachine>
+  </local:Activity1.Implementation>
+</local:Activity1>

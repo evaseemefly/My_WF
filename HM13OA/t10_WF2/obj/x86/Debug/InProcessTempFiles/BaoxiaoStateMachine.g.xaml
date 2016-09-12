@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<local:BaoxiaoStateMachine xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:local="clr-namespace:t10_WF2;assembly=t10_WF2" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>t10_WF2</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <local:BaoxiaoStateMachine.Implementation>
+    <StateMachine>
+      <StateMachine.InitialState>
+        <State x:Name="__ReferenceID0" DisplayName="发起流程">
+          <State.Entry>
+            <local:BaoxiaoInput>
+              <local:BaoxiaoInput.Money>
+                <OutArgument x:TypeArguments="x:Int32">
+                  <mca:CSharpReference x:TypeArguments="x:Int32">M1</mca:CSharpReference>
+                </OutArgument>
+              </local:BaoxiaoInput.Money>
+              <local:BaoxiaoInput.Reason>
+                <OutArgument x:TypeArguments="x:String">
+                  <mca:CSharpReference x:TypeArguments="x:String">R1</mca:CSharpReference>
+                </OutArgument>
+              </local:BaoxiaoInput.Reason>
+            </local:BaoxiaoInput>
+          </State.Entry>
+          <State.Transitions>
+            <Transition DisplayName="发起" Condition="True">
+              <Transition.To>
+                <State x:Name="__ReferenceID2" DisplayName="经理审批">
+                  <State.Entry>
+                    <local:BaoxiaoApprove>
+                      <local:BaoxiaoApprove.Approve>
+                        <OutArgument x:TypeArguments="x:Boolean">
+                          <mca:CSharpReference x:TypeArguments="x:Boolean">A1</mca:CSharpReference>
+                        </OutArgument>
+                      </local:BaoxiaoApprove.Approve>
+                      <local:BaoxiaoApprove.Money>
+                        <InArgument x:TypeArguments="x:Int32">
+                          <mca:CSharpValue x:TypeArguments="x:Int32">M1</mca:CSharpValue>
+                        </InArgument>
+                      </local:BaoxiaoApprove.Money>
+                      <local:BaoxiaoApprove.Reason>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String">R1</mca:CSharpValue>
+                        </InArgument>
+                      </local:BaoxiaoApprove.Reason>
+                    </local:BaoxiaoApprove>
+                  </State.Entry>
+                  <State.Transitions>
+                    <Transition DisplayName="同意">
+                      <Transition.Condition>
+                        <mca:CSharpValue x:TypeArguments="x:Boolean">A1==true</mca:CSharpValue>
+                      </Transition.Condition>
+                      <Transition.To>
+                        <State x:Name="__ReferenceID1" DisplayName="结束" IsFinal="True">
+                          <State.Entry>
+                            <WriteLine Text="报销完成" />
+                          </State.Entry>
+                        </State>
+                      </Transition.To>
+                    </Transition>
+                    <Transition DisplayName="驳回" To="{x:Reference __ReferenceID0}">
+                      <Transition.Condition>
+                        <mca:CSharpValue x:TypeArguments="x:Boolean">A1==false</mca:CSharpValue>
+                      </Transition.Condition>
+                    </Transition>
+                  </State.Transitions>
+                </State>
+              </Transition.To>
+            </Transition>
+          </State.Transitions>
+        </State>
+      </StateMachine.InitialState>
+      <x:Reference>__ReferenceID0</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <StateMachine.Variables>
+        <Variable x:TypeArguments="x:Int32" Name="M1" />
+        <Variable x:TypeArguments="x:String" Name="R1" />
+        <Variable x:TypeArguments="x:Boolean" Name="A1" />
+      </StateMachine.Variables>
+      <sads:DebugSymbol.Symbol>d0VDOlxVc2Vyc1xxMVxEZXNrdG9wXDIwMTQtNy0xNVxITTEzT0FcdDEwX1dGMlxCYW94aWFvU3RhdGVNYWNoaW5lLnhhbWwQJwNxEgIBASkHZg8CAR5VF1kfAgEaOw9iFwIBAisLNiACASI5YTlnAgEgVxtXYgIBHD0TTSoCAQ1SF1JeAgEIXhdeXwIBBDMRM1kCAScuES5YAgEjV1lXXwIBHUoZSlkCARZAGUBiAgESRRlFWAIBDg==</sads:DebugSymbol.Symbol>
+    </StateMachine>
+  </local:BaoxiaoStateMachine.Implementation>
+</local:BaoxiaoStateMachine>

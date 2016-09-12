@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  
+  <object type="lshOA.UI.Controllers.UserInfoController, lshOA.UI" singleton="false" >
+    <property name="userInfoBLL" ref="userInfoService" />
+    <property name="actionInfoBLL" ref="actionInfoService" />
+    <property name="r_UserInfo_ActionInfoBLL" ref="r_UserInfo_ActionInfoService" />
+  </object>
+  <object type="lshOA.UI.Controllers.LoginController, lshOA.UI" singleton="false" >
+    <property name="userInfoBLL" ref="userInfoService" />
+  </object>
+  <object type="lshOA.UI.Controllers.RoleInfoController, lshOA.UI" singleton="false" >
+    <property name="roleInfoBLL" ref="roleInfoService" />
+  </object>
+  <object type="lshOA.UI.Controllers.ActionInfoController, lshOA.UI" singleton="false" >
+    <property name="actionInfoBLL" ref="actionInfoService" />
+    <property name="roleInfoBLL" ref="roleInfoService" />
+  </object>
+  <object type="lshOA.UI.Controllers.SearchController, lshOA.UI" singleton="false" >
+    <property name="bookBLL" ref="bookService" />
+  </object>
+  <object type="lshOA.UI.Controllers.MyHomeController, lshOA.UI" singleton="false" >
+    <property name="userInfoBLL" ref="userInfoService" />
+  </object>
+  <object type="lshOA.UI.Controllers.WF_TempController, lshOA.UI" singleton="false" >
+    <property name="wf_TempBLL" ref="wf_TempService" />
+  </object>
+  <object type="lshOA.UI.Controllers.WF_InstanceController, lshOA.UI" singleton="false" >
+    <property name="wf_TempBLL" ref="wf_TempService" />
+    <property name="userInfoBLL" ref="userInfoService" />
+  </object>
+</objects>

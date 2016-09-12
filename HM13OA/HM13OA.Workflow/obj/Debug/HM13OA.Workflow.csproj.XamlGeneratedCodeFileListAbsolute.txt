@@ -1,0 +1,4 @@
+obj\Debug\_HM13OA.Workflow.g.cs
+obj\Debug\Baoxiao.g.cs
+obj\Debug\HM13OA.Workflow_Baoxiao_BeforeInitializeComponentHelper.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow_Baoxiao_CompiledExpressionRoot.cs

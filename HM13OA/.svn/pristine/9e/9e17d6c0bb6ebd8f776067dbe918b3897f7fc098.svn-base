@@ -1,0 +1,46 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using HM13OA.DAL;
+using HM13OA.IDAL;
+
+namespace HM13OA.DalFactory
+{
+    public partial class DbSession:IDbSession
+    {
+        
+		public IUserInfoDal GetUserInfoDal()
+        {
+            return  new UserInfoDal();
+        }
+		public IRoleInfoDal GetRoleInfoDal()
+        {
+            return  new RoleInfoDal();
+        }
+		public IActionInfoDal GetActionInfoDal()
+        {
+            return  new ActionInfoDal();
+        }
+		public IUserActionDal GetUserActionDal()
+        {
+            return  new UserActionDal();
+        }
+		public IWorkFlowModelDal GetWorkFlowModelDal()
+        {
+            return  new WorkFlowModelDal();
+        }
+		public IWorkflowInstanceDal GetWorkflowInstanceDal()
+        {
+            return  new WorkflowInstanceDal();
+        }
+		public IWorkflowStepDal GetWorkflowStepDal()
+        {
+            return  new WorkflowStepDal();
+        }
+	}
+
+}

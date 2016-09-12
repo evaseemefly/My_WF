@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = null;
+}
+@using lshOA.MODEL
+@model lshOA.MODEL.UserInfo
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>为用户设置权限</title>
+    <link href="~/Scripts/EasyUI/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" />
+    <link href="~/Scripts/EasyUI/jquery-easyui-1.4.4/themes/black/easyui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/EasyUI/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/EasyUI/jquery-easyui-1.4.4/easyui-lang-zh_CN.js"></script>    
+    <link href="~/Content/tableStyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            $(".setActions").click(function () {
+                var userId=@Model.ID
+                $.post("/UserInfo/SetActionForUser", {
+                    "userId":userId,
+                    "actionId":$(this).attr("ids"),
+                    "value":$(this).val()
+                },function(data){
+                    if(data=="ok")
+                    {
+                        //注意此处由于该页面是其父页面中嵌套的iframe页面，所以需要调用父页面中的messager提示方法
+                        window.parent.showmessager("修改成功");
+
+                    }
+                })
+            });
+
+            $(".ClearActions").click(function () {
+                $.post("/UserInfo/ClearActionUser", 
+                    {
+                        "userId":@Model.ID,
+                        "actionId":$(this).attr("ids")
+                    },function(data){
+                        if(data=="ok")
+                        {
+                            //注意此处由于该页面是其父页面中嵌套的iframe页面，所以需要调用父页面中的messager提示方法
+                            window.parent.showmessager("删除成功");
+                        }
+                        else{
+                            window.parent.showmessager("删除失败");
+                        }
+
+                    });
+            })
+        })
+    </script>
+</head>
+<body>
+    <div> 
+        为当前用户：
+        @{
+            //当前用户对象
+            UserInfo userInfo = (UserInfo)ViewBag.UserInfo;
+            <span style="font-size:16px;color:red">@userInfo.UName</span>
+         }设置权限
+    </div>
+    <div>
+        @*@using (Ajax.BeginForm("SetUserAction", new { }, new AjaxOptions() { OnSuccess = "afterSet" }, new { id = "form1" }))
+        {*@
+        @using (Ajax.BeginForm("SetUserAction", new { }, new AjaxOptions() { OnSuccess = "afterSet" }, new { id = "form1" }))
+        {
+            List<ActionInfo> AllActionList = (List<ActionInfo>)ViewBag.AllActions;
+            List<R_UserInfo_ActionInfo> AllExtActionList = (List<R_UserInfo_ActionInfo>)ViewBag.AllExtActions;
+            <table>
+                <tr>
+                    <th>权限编号</th>
+                    <th>权限名称</th>
+                    <th>地址</th>
+                    <th>请求方式</th>
+                    <th>操作</th>
+                </tr>
+                @foreach (var actionInfo in AllActionList)
+                {
+                    <tr>
+                        <td>@actionInfo.ID</td>
+                        <td>@actionInfo.ActionInfoName</td>
+                        <td>@actionInfo.Url</td>
+                        <td>@actionInfo.HttpMethod</td>
+                        <td>
+                            @{
+                                var rb = "rb_" + actionInfo.ID;
+                                var rb_no = "rb_no_" + actionInfo.ID;
+                                var rb_clear = "rb_clear_" + actionInfo.ID;
+                                var ExtAction = (from a in AllExtActionList
+                                                 where a.ActionInfoID == actionInfo.ID
+                                                 select a).FirstOrDefault();
+                                if (ExtAction == null)
+                                {
+                                    <label>允许</label>
+                                    <input type="radio" id="@rb" name="@rb"class="setActions"  value="true" ids="@actionInfo.ID" />
+                                    <label>拒绝</label>
+                                    <input type="radio" id="@rb_no" name="@rb" class="setActions" value="false" ids="@actionInfo.ID" />
+                                    <label>清除</label>
+                                    <input type="radio" id="rb_clear" class="ClearActions" name="@rb" checked="checked" ids="@actionInfo.ID" />
+                                }
+                                else
+                                {
+                                    if (ExtAction.IsPass == true)
+                                    {
+                                        <label>允许</label>
+                                        <input type="radio" id="@rb" name="@rb" value="true" checked="checked" class="setActions" ids="@actionInfo.ID" />
+                                        <label>拒绝</label>
+                                        <input type="radio" id="@rb_no" name="@rb" value="false" class="setActions" ids="@actionInfo.ID" />
+                                        <label>清除</label>
+                                        <input type="radio" id="rb_clear"class="ClearActions" name="@rb" ids="@actionInfo.ID" />
+                                    }
+                                    else
+                                    {
+                                        <label>允许</label>
+                                        <input type="radio" id="@rb" name="@rb"class="setActions" value="true" ids="@actionInfo.ID" />
+                                        <label>拒绝</label>
+                                        <input type="radio" id="@rb_no" name="@rb" value="false"class="setActions" checked="checked" ids="@actionInfo.ID" />
+                                        <label>清除</label>
+                                        <input type="radio" id="rb_clear"class="ClearActions" name="@rb" ids="@actionInfo.ID" />
+                                    }
+                                }
+
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</body>
+</html>

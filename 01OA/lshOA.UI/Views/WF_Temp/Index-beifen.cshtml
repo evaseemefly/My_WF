@@ -1,0 +1,37 @@
+﻿@using lshOA.MODEL
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+            <th>模板编号</th>
+            <th>模板名</th>
+            <th>创建时间</th>
+            <th>备注</th>
+            <th>流程状态</th>
+            <th>操作</th>
+            </tr>
+           
+           @foreach(var wf_temp in(List<WF_Temp>)ViewData["list"])
+            {
+
+                <tr>
+            <td>@wf_temp.ID</td>
+            <td>@wf_temp.TempName</td>
+                    <td>@wf_temp.SubBy</td>
+                    <td>@wf_temp.Remark</td>
+                    <td>@wf_temp.TempStatus</td>
+                    <td>编辑</td>
+            </tr>
+
+            }
+        </table>
+    </div>
+</body>
+</html>

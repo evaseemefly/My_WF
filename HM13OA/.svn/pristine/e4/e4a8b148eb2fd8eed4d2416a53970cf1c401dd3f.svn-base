@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HM13OA.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="HM13OAStoreContainer">
+    <EntitySet Name="UserInfo" EntityType="HM13OA.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleInfo" EntityType="HM13OA.Store.RoleInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActionInfo" EntityType="HM13OA.Store.ActionInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserAction" EntityType="HM13OA.Store.UserAction" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkFlowModel" EntityType="HM13OA.Store.WorkFlowModel" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkflowInstance" EntityType="HM13OA.Store.WorkflowInstance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkflowStep" EntityType="HM13OA.Store.WorkflowStep" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfoRoleInfo" EntityType="HM13OA.Store.UserInfoRoleInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RoleInfoActionInfo" EntityType="HM13OA.Store.RoleInfoActionInfo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_UserInfoRoleInfo_UserInfo" Association="HM13OA.Store.FK_UserInfoRoleInfo_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserInfoRoleInfo" EntitySet="UserInfoRoleInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfoRoleInfo_RoleInfo" Association="HM13OA.Store.FK_UserInfoRoleInfo_RoleInfo">
+      <End Role="RoleInfo" EntitySet="RoleInfo" />
+      <End Role="UserInfoRoleInfo" EntitySet="UserInfoRoleInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleInfoActionInfo_RoleInfo" Association="HM13OA.Store.FK_RoleInfoActionInfo_RoleInfo">
+      <End Role="RoleInfo" EntitySet="RoleInfo" />
+      <End Role="RoleInfoActionInfo" EntitySet="RoleInfoActionInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleInfoActionInfo_ActionInfo" Association="HM13OA.Store.FK_RoleInfoActionInfo_ActionInfo">
+      <End Role="ActionInfo" EntitySet="ActionInfo" />
+      <End Role="RoleInfoActionInfo" EntitySet="RoleInfoActionInfo" />
+    </AssociationSet>
+    <AssociationSet Name="UserInfoUserAction" Association="HM13OA.Store.UserInfoUserAction">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="UserAction" EntitySet="UserAction" />
+    </AssociationSet>
+    <AssociationSet Name="ActionInfoUserAction" Association="HM13OA.Store.ActionInfoUserAction">
+      <End Role="ActionInfo" EntitySet="ActionInfo" />
+      <End Role="UserAction" EntitySet="UserAction" />
+    </AssociationSet>
+    <AssociationSet Name="WorkflowInstanceWorkflowStep" Association="HM13OA.Store.WorkflowInstanceWorkflowStep">
+      <End Role="WorkflowInstance" EntitySet="WorkflowInstance" />
+      <End Role="WorkflowStep" EntitySet="WorkflowStep" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="UserPwd" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SubBy" Type="int" Nullable="false" />
+    <Property Name="SubTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleInfo">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SubBy" Type="int" Nullable="false" />
+    <Property Name="SubTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActionInfo">
+    <Key>
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="ActionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SubBy" Type="int" Nullable="false" />
+    <Property Name="SubTime" Type="datetime" Nullable="false" />
+    <Property Name="ActionTitle" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="ControllerName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ActionName" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="IsMenu" Type="bit" Nullable="false" />
+    <Property Name="MenuIcon" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="UserAction">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ActionId" />
+    </Key>
+    <Property Name="IsAllow" Type="bit" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ActionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkFlowModel">
+    <Key>
+      <PropertyRef Name="ModelId" />
+    </Key>
+    <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelTitle" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" Nullable="false" MaxLength="1000" />
+    <Property Name="SubBy" Type="int" Nullable="false" />
+    <Property Name="SubTime" Type="datetime" Nullable="false" />
+    <Property Name="ControllerName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="ActionName" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkflowInstance">
+    <Key>
+      <PropertyRef Name="InstanceId" />
+    </Key>
+    <Property Name="InstanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstanceTitle" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="SubBy" Type="int" Nullable="false" />
+    <Property Name="SubTime" Type="datetime" Nullable="false" />
+    <Property Name="InstanceGuid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="InstanceState" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkflowStep">
+    <Key>
+      <PropertyRef Name="StepId" />
+    </Key>
+    <Property Name="StepId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstanceId" Type="int" Nullable="false" />
+    <Property Name="NextId" Type="int" Nullable="false" />
+    <Property Name="SubBy" Type="int" Nullable="false" />
+    <Property Name="SubTime" Type="datetime" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" Nullable="false" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="UserInfoRoleInfo">
+    <Key>
+      <PropertyRef Name="UserInfo_UserId" />
+      <PropertyRef Name="RoleInfo_RoleId" />
+    </Key>
+    <Property Name="UserInfo_UserId" Type="int" Nullable="false" />
+    <Property Name="RoleInfo_RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleInfoActionInfo">
+    <Key>
+      <PropertyRef Name="RoleInfo_RoleId" />
+      <PropertyRef Name="ActionInfo_ActionId" />
+    </Key>
+    <Property Name="RoleInfo_RoleId" Type="int" Nullable="false" />
+    <Property Name="ActionInfo_ActionId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserInfoUserAction">
+    <End Role="UserInfo" Type="HM13OA.Store.UserInfo" Multiplicity="1" />
+    <End Role="UserAction" Type="HM13OA.Store.UserAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAction">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActionInfoUserAction">
+    <End Role="ActionInfo" Type="HM13OA.Store.ActionInfo" Multiplicity="1" />
+    <End Role="UserAction" Type="HM13OA.Store.UserAction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActionInfo">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="UserAction">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkflowInstanceWorkflowStep">
+    <End Role="WorkflowInstance" Type="HM13OA.Store.WorkflowInstance" Multiplicity="1" />
+    <End Role="WorkflowStep" Type="HM13OA.Store.WorkflowStep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowInstance">
+        <PropertyRef Name="InstanceId" />
+      </Principal>
+      <Dependent Role="WorkflowStep">
+        <PropertyRef Name="InstanceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfoRoleInfo_UserInfo">
+    <End Role="UserInfo" Type="HM13OA.Store.UserInfo" Multiplicity="1" />
+    <End Role="UserInfoRoleInfo" Type="HM13OA.Store.UserInfoRoleInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserInfoRoleInfo">
+        <PropertyRef Name="UserInfo_UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfoRoleInfo_RoleInfo">
+    <End Role="UserInfoRoleInfo" Type="HM13OA.Store.UserInfoRoleInfo" Multiplicity="*" />
+    <End Role="RoleInfo" Type="HM13OA.Store.RoleInfo" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="RoleInfo">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserInfoRoleInfo">
+        <PropertyRef Name="RoleInfo_RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleInfoActionInfo_RoleInfo">
+    <End Role="RoleInfo" Type="HM13OA.Store.RoleInfo" Multiplicity="1" />
+    <End Role="RoleInfoActionInfo" Type="HM13OA.Store.RoleInfoActionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoleInfo">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleInfoActionInfo">
+        <PropertyRef Name="RoleInfo_RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleInfoActionInfo_ActionInfo">
+    <End Role="RoleInfoActionInfo" Type="HM13OA.Store.RoleInfoActionInfo" Multiplicity="*" />
+    <End Role="ActionInfo" Type="HM13OA.Store.ActionInfo" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ActionInfo">
+        <PropertyRef Name="ActionId" />
+      </Principal>
+      <Dependent Role="RoleInfoActionInfo">
+        <PropertyRef Name="ActionInfo_ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="HM13OA" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="HM13OAContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserInfo" EntityType="HM13OA.UserInfo" />
+          <EntitySet Name="RoleInfo" EntityType="HM13OA.RoleInfo" />
+          <EntitySet Name="ActionInfo" EntityType="HM13OA.ActionInfo" />
+          <AssociationSet Name="UserInfoRoleInfo" Association="HM13OA.UserInfoRoleInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="RoleInfo" EntitySet="RoleInfo" />
+          </AssociationSet>
+          <AssociationSet Name="RoleInfoActionInfo" Association="HM13OA.RoleInfoActionInfo">
+            <End Role="RoleInfo" EntitySet="RoleInfo" />
+            <End Role="ActionInfo" EntitySet="ActionInfo" />
+          </AssociationSet>
+          <EntitySet Name="UserAction" EntityType="HM13OA.UserAction" />
+          <AssociationSet Name="UserInfoUserAction" Association="HM13OA.UserInfoUserAction">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="UserAction" EntitySet="UserAction" />
+          </AssociationSet>
+          <AssociationSet Name="ActionInfoUserAction" Association="HM13OA.ActionInfoUserAction">
+            <End Role="ActionInfo" EntitySet="ActionInfo" />
+            <End Role="UserAction" EntitySet="UserAction" />
+          </AssociationSet>
+          <EntitySet Name="WorkFlowModel" EntityType="HM13OA.WorkFlowModel" />
+          <EntitySet Name="WorkflowInstance" EntityType="HM13OA.WorkflowInstance" />
+          <EntitySet Name="WorkflowStep" EntityType="HM13OA.WorkflowStep" />
+          <AssociationSet Name="WorkflowInstanceWorkflowStep" Association="HM13OA.WorkflowInstanceWorkflowStep">
+            <End Role="WorkflowInstance" EntitySet="WorkflowInstance" />
+            <End Role="WorkflowStep" EntitySet="WorkflowStep" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" Unicode="true" FixedLength="false" MaxLength="10" />
+          <Property Type="String" Name="UserPwd" Nullable="false" Unicode="false" FixedLength="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="false" Unicode="true" FixedLength="false" MaxLength="1000" />
+          <Property Type="Int32" Name="SubBy" Nullable="false" />
+          <Property Type="DateTime" Name="SubTime" Nullable="false" />
+          <NavigationProperty Name="RoleInfo" Relationship="HM13OA.UserInfoRoleInfo" FromRole="UserInfo" ToRole="RoleInfo" />
+          <NavigationProperty Name="UserAction" Relationship="HM13OA.UserInfoUserAction" FromRole="UserInfo" ToRole="UserAction" />
+        </EntityType>
+        <EntityType Name="RoleInfo">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RoleName" Nullable="false" Unicode="true" FixedLength="false" MaxLength="10" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SubBy" Nullable="false" />
+          <Property Type="DateTime" Name="SubTime" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="HM13OA.UserInfoRoleInfo" FromRole="RoleInfo" ToRole="UserInfo" />
+          <NavigationProperty Name="ActionInfo" Relationship="HM13OA.RoleInfoActionInfo" FromRole="RoleInfo" ToRole="ActionInfo" />
+        </EntityType>
+        <EntityType Name="ActionInfo">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Type="Int32" Name="ActionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SubBy" Nullable="false" />
+          <Property Type="DateTime" Name="SubTime" Nullable="false" />
+          <Property Type="String" Name="ActionTitle" Nullable="false" Unicode="true" FixedLength="false" MaxLength="10" />
+          <Property Type="String" Name="ControllerName" Nullable="false" Unicode="false" FixedLength="false" MaxLength="50" />
+          <Property Type="String" Name="ActionName" Nullable="false" Unicode="false" FixedLength="false" MaxLength="20" />
+          <NavigationProperty Name="RoleInfo" Relationship="HM13OA.RoleInfoActionInfo" FromRole="ActionInfo" ToRole="RoleInfo" />
+          <NavigationProperty Name="UserAction" Relationship="HM13OA.ActionInfoUserAction" FromRole="ActionInfo" ToRole="UserAction" />
+          <Property Type="Boolean" Name="IsMenu" Nullable="false" />
+          <Property Type="String" Name="MenuIcon" Nullable="false" Unicode="false" FixedLength="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="UserInfoRoleInfo">
+          <End Type="HM13OA.UserInfo" Role="UserInfo" Multiplicity="*" />
+          <End Type="HM13OA.RoleInfo" Role="RoleInfo" Multiplicity="*" />
+        </Association>
+        <Association Name="RoleInfoActionInfo">
+          <End Type="HM13OA.RoleInfo" Role="RoleInfo" Multiplicity="*" />
+          <End Type="HM13OA.ActionInfo" Role="ActionInfo" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserAction" >
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Type="Boolean" Name="IsAllow" Nullable="false" />
+          <NavigationProperty Name="UserInfo" Relationship="HM13OA.UserInfoUserAction" FromRole="UserAction" ToRole="UserInfo" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <NavigationProperty Name="ActionInfo" Relationship="HM13OA.ActionInfoUserAction" FromRole="UserAction" ToRole="ActionInfo" />
+          <Property Type="Int32" Name="ActionId" Nullable="false" />
+        </EntityType>
+        <Association Name="UserInfoUserAction">
+          <End Type="HM13OA.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="HM13OA.UserAction" Role="UserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAction">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActionInfoUserAction">
+          <End Type="HM13OA.ActionInfo" Role="ActionInfo" Multiplicity="1" />
+          <End Type="HM13OA.UserAction" Role="UserAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionInfo">
+              <PropertyRef Name="ActionId" />
+            </Principal>
+            <Dependent Role="UserAction">
+              <PropertyRef Name="ActionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WorkFlowModel">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Type="Int32" Name="ModelId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ModelTitle" Nullable="false" Unicode="true" FixedLength="false" MaxLength="50" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SubBy" Nullable="false" />
+          <Property Type="DateTime" Name="SubTime" Nullable="false" />
+          <Property Type="String" Name="ControllerName" Nullable="false" Unicode="true" FixedLength="false" MaxLength="50" />
+          <Property Type="String" Name="ActionName" Nullable="false" Unicode="true" FixedLength="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WorkflowInstance">
+          <Key>
+            <PropertyRef Name="InstanceId" />
+          </Key>
+          <Property Type="Int32" Name="InstanceId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="InstanceTitle" Nullable="false" Unicode="true" FixedLength="false" MaxLength="50" />
+          <Property Type="Int32" Name="SubBy" Nullable="false" />
+          <Property Type="DateTime" Name="SubTime" Nullable="false" />
+          <Property Type="Guid" Name="InstanceGuid" Nullable="false" />
+          <Property Type="Int32" Name="InstanceState" Nullable="false" />
+          <NavigationProperty Name="WorkflowStep" Relationship="HM13OA.WorkflowInstanceWorkflowStep" FromRole="WorkflowInstance" ToRole="WorkflowStep" />
+        </EntityType>
+        <EntityType Name="WorkflowStep">
+          <Key>
+            <PropertyRef Name="StepId" />
+          </Key>
+          <Property Type="Int32" Name="StepId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="WorkflowInstance" Relationship="HM13OA.WorkflowInstanceWorkflowStep" FromRole="WorkflowStep" ToRole="WorkflowInstance" />
+          <Property Type="Int32" Name="InstanceId" Nullable="false" />
+          <Property Type="Int32" Name="NextId" Nullable="false" />
+          <Property Type="Int32" Name="SubBy" Nullable="false" />
+          <Property Type="DateTime" Name="SubTime" Nullable="false" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="WorkflowInstanceWorkflowStep">
+          <End Type="HM13OA.WorkflowInstance" Role="WorkflowInstance" Multiplicity="1" />
+          <End Type="HM13OA.WorkflowStep" Role="WorkflowStep" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkflowInstance">
+              <PropertyRef Name="InstanceId" />
+            </Principal>
+            <Dependent Role="WorkflowStep">
+              <PropertyRef Name="InstanceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HM13OAStoreContainer" CdmEntityContainer="HM13OAContainer">
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.UserInfo)">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="SubBy" ColumnName="SubBy" />
+          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.RoleInfo)">
+        <MappingFragment StoreEntitySet="RoleInfo">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="SubBy" ColumnName="SubBy" />
+          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActionInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.ActionInfo)">
+        <MappingFragment StoreEntitySet="ActionInfo">
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="SubBy" ColumnName="SubBy" />
+          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+          <ScalarProperty Name="ActionTitle" ColumnName="ActionTitle" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="IsMenu" ColumnName="IsMenu" />
+          <ScalarProperty Name="MenuIcon" ColumnName="MenuIcon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAction">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.UserAction)">
+        <MappingFragment StoreEntitySet="UserAction">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="IsAllow" ColumnName="IsAllow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkFlowModel">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.WorkFlowModel)">
+        <MappingFragment StoreEntitySet="WorkFlowModel">
+          <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+          <ScalarProperty Name="ModelTitle" ColumnName="ModelTitle" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="SubBy" ColumnName="SubBy" />
+          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowInstance">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.WorkflowInstance)">
+        <MappingFragment StoreEntitySet="WorkflowInstance">
+          <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+          <ScalarProperty Name="InstanceTitle" ColumnName="InstanceTitle" />
+          <ScalarProperty Name="SubBy" ColumnName="SubBy" />
+          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+          <ScalarProperty Name="InstanceGuid" ColumnName="InstanceGuid" />
+          <ScalarProperty Name="InstanceState" ColumnName="InstanceState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowStep">
+      <EntityTypeMapping TypeName="IsTypeOf(HM13OA.WorkflowStep)">
+        <MappingFragment StoreEntitySet="WorkflowStep">
+          <ScalarProperty Name="StepId" ColumnName="StepId" />
+          <ScalarProperty Name="InstanceId" ColumnName="InstanceId" />
+          <ScalarProperty Name="NextId" ColumnName="NextId" />
+          <ScalarProperty Name="SubBy" ColumnName="SubBy" />
+          <ScalarProperty Name="SubTime" ColumnName="SubTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserInfoRoleInfo" TypeName="HM13OA.UserInfoRoleInfo" StoreEntitySet="UserInfoRoleInfo">
+      <EndProperty Name="UserInfo">
+        <ScalarProperty Name="UserId" ColumnName="UserInfo_UserId" />
+      </EndProperty>
+      <EndProperty Name="RoleInfo">
+        <ScalarProperty Name="RoleId" ColumnName="RoleInfo_RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleInfoActionInfo" TypeName="HM13OA.RoleInfoActionInfo" StoreEntitySet="RoleInfoActionInfo">
+      <EndProperty Name="RoleInfo">
+        <ScalarProperty Name="RoleId" ColumnName="RoleInfo_RoleId" />
+      </EndProperty>
+      <EndProperty Name="ActionInfo">
+        <ScalarProperty Name="ActionId" ColumnName="ActionInfo_ActionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

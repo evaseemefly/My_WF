@@ -1,0 +1,8 @@
+obj\x86\Debug\Workflow1.g.xaml
+obj\x86\Debug\Activity.g.xaml
+obj\x86\Debug\MoneyActivity.g.xaml
+obj\x86\Debug\VacateActivity.g.xaml
+obj\x86\Debug\WF_Workflow1_BeforeInitializeComponentHelper.txt
+obj\x86\Debug\WF_Activity_BeforeInitializeComponentHelper.txt
+obj\x86\Debug\WF_MoneyActivity_BeforeInitializeComponentHelper.txt
+obj\x86\Debug\WF_VacateActivity_BeforeInitializeComponentHelper.txt

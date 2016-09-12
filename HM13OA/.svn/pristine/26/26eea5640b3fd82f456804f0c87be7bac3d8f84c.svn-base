@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using HM13OA.Model;
+using HM13OA.Service;
+
+namespace HM13OA.UI.Controllers
+{
+    public class UserInfoController : Controller
+    {
+        UserInfoService userInfoService=new UserInfoService();
+
+        public ActionResult Index()
+        {
+            ViewData.Model=userInfoService.GetList(u => true);
+            return View();
+        }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Add(UserInfo userInfo)
+        {
+            string result = "no";
+
+            //执行添加操作，并更改返回结果
+            if (userInfoService.Add(userInfo))
+            {
+                result = "ok";
+            }
+
+            return Content(result);
+        }
+
+    }
+}

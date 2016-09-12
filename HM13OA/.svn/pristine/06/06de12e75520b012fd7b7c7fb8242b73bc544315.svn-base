@@ -1,0 +1,23 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using HM13OA.DalFactory;
+using HM13OA.IDAL;
+using HM13OA.IService;
+using HM13OA.Model;
+
+namespace HM13OA.Service
+{
+        
+    public partial class UserInfoService:BaseService<UserInfo>,IUserInfoService
+    {
+        protected override IBaseDal<UserInfo> GetDal()
+        {
+            return dbSession.GetUserInfoDal();
+        }
+	}
+}

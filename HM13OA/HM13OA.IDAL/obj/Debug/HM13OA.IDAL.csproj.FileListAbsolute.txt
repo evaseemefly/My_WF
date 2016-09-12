@@ -1,0 +1,10 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\HM13OA.IDAL.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\HM13OA.IDAL.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\HM13OA.Model.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\EntityFramework.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\HM13OA.Model.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\EntityFramework.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\obj\Debug\HM13OA.IDAL.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\obj\Debug\HM13OA.IDAL.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IDAL\obj\Debug\HM13OA.IDAL.pdb

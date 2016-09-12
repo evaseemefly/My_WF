@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using HM13OA.DalFactory;
+using HM13OA.IDAL;
+using HM13OA.Model;
+
+namespace HM13OA.Service
+{
+    public partial class UserInfoService
+    {
+        //UserInfoDal userInfoDal=new UserInfoDal();
+        //private IUserInfoDal userInfoDal = DalFactory.DalFactory1.GetUserInfoDal();
+        //private IUserInfoDal userInfoDal = DalFactory1.GetUserInfoDal2();
+        private IUserInfoDal userInfoDal;
+        private IDbSession dbSession;
+
+        public UserInfoService()
+        {
+            //dbSession=new DbSession();
+            dbSession = DbSessionFactory.GetDbSession();
+            userInfoDal = dbSession.GetUserInfoDal();
+        }
+       
+
+        //增加
+        public bool Add(UserInfo userInfo)
+        {
+            userInfoDal.Add(userInfo);
+            return dbSession.SaveChanges() > 0;
+        }
+
+        //修改
+        public bool Edit(UserInfo userInfo)
+        {
+            userInfoDal.Edit(userInfo);
+            return dbSession.SaveChanges() > 0;
+        }
+
+        //删除
+
+        //查询
+        public UserInfo GetById(int id)
+        {
+            return userInfoDal.GetById(id);
+        }
+
+        public IQueryable<UserInfo> GetList(Expression<Func<UserInfo, bool>> whereLambda)
+        {
+            return userInfoDal.GetList(whereLambda);
+        } 
+    }
+}

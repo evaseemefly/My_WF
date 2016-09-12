@@ -1,0 +1,363 @@
+﻿@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>角色管理</title>
+    <link href="~/Scripts/EasyUI/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" />
+    <link href="~/Scripts/EasyUI/jquery-easyui-1.4.4/themes/black/easyui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/EasyUI/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/EasyUI/jquery-easyui-1.4.4/easyui-lang-zh_CN.js"></script>
+    @*<script src="~/Scripts/MyAjaxForm.js"></script>*@
+    <script src="~/Scripts/Ajax/ajaxfileupload.js"></script>
+    @*<script src="~/Scripts/ajaxfileupload.js"></script>*@
+    <script type="text/javascript">
+        $(function () {
+
+            $("#addDiv").css("display", "none");
+            $("#editDiv").css("display", "none");//隐藏修改表单
+            loadData();
+            bindSelectActionTypeChange();   //给权限类型下拉框加上改变事件
+
+            $("#btnUploadIcon").click(function () {
+                if ($("#imgIcon").val().length > 0) {
+                    ajaxFileUpload();
+                }
+                else {
+                    alert("请选择图片");
+                }
+            })
+        });
+        function bindSelectActionTypeChange() {
+            $("#selectActionType").change(function () {
+                if ($(this).val() == "0") {
+                    $("#imageIconDiv").fadeOut("slow");
+                }
+                else {
+                    $("#imageIconDiv").fadeIn("slow");
+                }
+
+            });
+        }
+        //文件异步上传
+        function ajaxFileUpload() {
+            $.ajaxFileUpload
+            (
+                {
+                    url: '/ActionInfo/GetMenuIcon', //用于文件上传的服务器端请求地址
+                    secureuri: false, //一般设置为false
+                    fileElementId: 'imgIcon', //文件上传空间的id属性  <input type="file" id="file" name="file" />
+                    dataType: 'json', //返回值类型 一般设置为json
+                    success: function (data, status)  //服务器成功响应处理函数
+                    {
+                        if (data) {
+                            if (data.state != "ok")
+                            {
+                                alert(data.errorMessage);
+                            }
+                            else
+                            {
+                                $("#hideImgSrc").attr("value", data.imgSerPath);
+                                //获取需要追加图片的div
+                                $("#menuIconShow").append("<img src='" + data.imgSerPath + "' width='40px' height='40px' />")
+                            }
+                        }
+                    },
+                    error: function (data, status, e)//服务器响应失败处理函数
+                    {
+                        alert(e);
+                    }
+                }
+            )
+            return false;
+        }
+
+
+        function loadData(pars) {
+            $("#tt").datagrid({
+                url: '/ActionInfo/GetActionInfo',
+                title: '权限管理表格',
+                width: 700,
+                height: 400,
+                fitColumns: true, //列自适应
+                nowrap: false,
+                idField: 'ID',//主键列的列明
+                loadMsg: '正在加载用户的信息...',
+                pagination: true,//是否有分页
+                singleSelect: false,//是否单行选择
+                pageSize: 10,//页大小，一页多少条数据
+                pageNumber: 1,//当前页，默认的
+                pageList: [10, 20, 30],
+                queryParams: pars,//往后台传递参数
+                columns: [[//c.UserName, c.UserPass, c.Email, c.RegTime
+                    { field: 'ck', checkbox: true, align: 'left', width: 50 },
+					{ field: 'ID', title: '编号', width: 60 },
+					{ field: 'ActionInfoName', title: '权限名', width: 120 },
+                    { field: 'Sort', title: '排序', width: 60 },
+                    { field: 'Url', title: '请求地址', width: 140 },
+                    { field: 'HttpMethod', title: '请求方式', width: 100 },
+                    { field: 'ActionTypeEnum', title: '权限类型', width: 80 ,
+                    formatter: function (value) {
+                        if(value==1)
+                        {
+                            return "菜单权限";
+                        }
+                        else {
+                            return "普通权限";
+                        }
+                    }
+                    },
+                    {
+                        field: 'SubTime', title: '时间', width: 100, align: 'right',
+                        formatter: function (value) {
+                            var date = new Date(parseInt(value.replace("/Date(", "").replace(")/", ""), 10));
+                            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                            return date.getFullYear() + "-" + month + "-" + currentDate;
+                        }
+                    },
+                    { field: 'Remark', title: '备注', width: 150 },
+
+                ]],
+                toolbar: [
+
+                    {
+                    id: 'btnDelete',
+                    text: '删除',
+                    iconCls: 'icon-remove',
+                    handler: function () {
+
+                        deleteInfo();
+                    }
+                }, {
+                    id: 'btnAdd',
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+
+                        addInfo();
+                    }
+                }, {
+                    id: 'btnEdit',
+                    text: '编辑',
+                    iconCls: 'icon-edit',
+                    handler: function () {
+
+                        eidtInfo();
+                    }
+                }, {
+                    id: 'btnAdd',
+                    text: '添加',
+                    iconCls: 'icon-add',
+                    handler: function () {
+
+                        addInfo();
+                    }
+                }],
+            });
+        }
+
+
+
+        //删除选中的用户数据
+        function deleteInfo() {
+            var rows = $("#tt").datagrid("getSelections");  //返回所有被选中的行，当没有记录被选中的时候将返回一个空数组。
+            //若没有选中
+            if (!rows || rows.length == 0) {
+                $.messager.alert("提醒", "请选择要删除的记录", "error");
+                return;
+            }
+            else ($.messager.confirm("提醒", "是否要删除选中的记录", function (r) {
+                if (r)//若单击了确定
+                {
+                    //获取要删除的ID
+                    //注意：ID可能为多个（数组）
+                    var strId = "";
+                    for (var i = 0; i < rows.length; i++) {
+                        strId = strId + rows[i].ID + ",";
+                    }
+                    strId = strId.substr(0, strId.length - 1);   //去掉最后的一个“,”
+                    $.post("/RoleInfo/DeleteUserInfo",//请求的url
+                        {"strId":strId},             //传过去的json格式数据
+                        function(data){             //回调函数
+                            if (data = "ok") {
+                                $("#tt").datagrid('clearChecked');  //清除所有勾选的行
+                                //重新加载
+                                $("#tt").datagrid('reload');
+                            }
+                            else
+                            {
+                                $.messager.alert("注意", "删除记录失败", "error");
+                            }
+
+                        });
+                }
+            }
+            ))
+        }
+
+        //执行修改操作
+        function eidtInfo() {
+
+
+
+            //1 获取所选中的行
+            var rows = $("#tt").datagrid('getSelections');
+            //2 若选中的行数不等于1，则提示出错
+            if (rows.length != 1)
+            {
+                $.messager.alert("提示", "请选中一行数据", "error");
+                return;
+            }
+
+            //方法（二）
+            $("#editFrame").attr("src", "/RoleInfo/ShowEditInfo/?id=" + rows[0].ID);
+            //$("#editDiv").css("display", "block");//显示修改div
+            $("#editDiv").css("display", "block");
+
+            $('#editDiv').dialog({
+                title: "编辑角色信息",
+                width: 300,
+                height: 350,
+                collapsible: true,
+                resizable: true,
+                modal: true,
+                buttons: [{
+                    text: '确定',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        //$("#editForm").submit();//提交表单
+                        var childWindow = $("#editFrame")[0].contentWindow;//获取子窗体的window对象.
+                        childWindow.subForm();
+                    }
+                }, {
+                    text: '取消',
+                    handler: function () {
+                        $('#editDiv').dialog('close');
+                    }
+                }]
+            });
+        }
+
+        //添加信息
+        function addInfo() {
+            $("#addDiv").css("display", "block");
+            $('#addDiv').dialog({
+                title: "添加信息",
+                modal: true,
+                collapsible: true,
+                width: 350,
+                height: 400,
+                buttons: [{
+                    text: 'Ok',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        //自己完成表单校验
+                        $("#addForm").submit();//提交表单.
+                    }
+                }, {
+                    text: 'Cancel',
+                    handler: function () {
+                        $('#addDiv').dialog('close');
+
+                    }
+                }]
+            });
+        }
+
+        function afterAdd(data) {
+            if (data == "ok") {
+                $.messager.alert("提示", "新增成功", "info");
+                $("#addForm input").val("UName");
+                $("#addDiv").dialog('close');
+                $("#tt").datagrid('reload');
+
+            }
+            else
+            {
+                $.messager.alert("错误", "添加失败", "error");
+                $("#addForm input").val("");
+                $("#addDiv").dialog('close');
+                $("#tt").datagrid('reload');
+            }
+        }
+
+        function afterEdit(data) {
+            if (data == "ok") {
+                $.messager.alert("提示", "修改成功", "info");
+                $("#editForm input").val("UName");
+                $("#editDiv").dialog('close');
+                $("#tt").datagrid('reload');
+
+            }
+            else {
+                $.messager.alert("错误", "修改失败", "error");
+                $("#editForm input").val("");
+                $("#editDiv").dialog('close');
+                $("#tt").datagrid('reload');
+            }
+        }
+
+        //将序列化成json格式后日期(毫秒数)转成日期格式加密
+        function ChangeDateFormat(cellval) {
+            var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate;
+        }
+
+    </script>
+</head>
+<body>
+    <div style="overflow-y:hidden">
+        <table id="tt" style="width: 700px;" title="标题，可以使用代码进行初始化，也可以使用这种属性的方式" iconcls="icon-edit"></table>
+    </div>
+    <div id="addDiv">
+        @using (Ajax.BeginForm("AddActionInfo","ActionInfo", new { }, new AjaxOptions() { Confirm = "你确定添加吗?", HttpMethod = "post", OnSuccess = "afterAdd" }, new { id = "addForm" }))
+        {
+            <table>
+                <tr><td>权限名称</td><td><input type="text" name="ActionInfoName" /></td></tr>
+                <tr><td>URL</td><td><input type="text" name="URL" /></td></tr>
+                <tr>
+                    <td>HttpMethod:</td>
+                    <td>
+                        <select name="HttpMethod">
+                            <option value="GET">GET</option>
+                            <option value="Post">Post</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>权限类型</td>
+                    <td>
+                        <select name="ActionTypeEnum" id="selectActionType">
+                            <option value="0">普通权限</option>
+                            <option value="1">菜单权限</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="display:none" id="imageIconTr">
+                    <td>菜单图标:</td>
+                    <td>
+                        <input type="file" name="MenuIcon" id="imgIcon" />
+                        <input type="button" id="btnUpload" value="异步上传" />
+                        <input type="hidden" id="hidImage" name="MenuIcon" />
+                        <div id="menuIconShow">
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                <tr><td>排序</td><td><input type="text" name="Sort" /></td></tr>
+                <tr><td>备注</td><td><input type="text" name="Remark" /></td></tr>
+            </table>
+        }
+    </div>
+</body>
+</html>
+

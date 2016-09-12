@@ -1,0 +1,59 @@
+﻿@model HM13OA.Model.WorkFlowModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    
+    <script>
+        function EditSubmit() {
+            $('form').submit();
+        }
+
+        function EditAfter(msg) {
+            window.parent.EditAfter(msg);
+        }
+    </script></head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("Edit", "WorkflowModel", new AjaxOptions()
+        {
+            OnSuccess = "EditAfter"
+        }))
+        {
+            <table border="1">
+                <tr>
+                    <td>编号</td>
+                    <td>
+                        @Model.ModelId
+                        <input type="hidden" name="ModelId" value="@Model.ModelId"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>名称：</td>
+                    <td>@Html.TextBoxFor(m=>m.ModelTitle)</td>
+                </tr>
+                <tr>
+                    <td>控制器名称：</td>
+                    <td>@Html.TextBoxFor(m=>m.ControllerName)</td>
+                </tr>
+                <tr>
+                    <td>行为名称：</td>
+                    <td>@Html.TextBoxFor(m=>m.ActionName)</td>
+                </tr>
+                <tr>
+                    <td>说明：</td>
+                    <td>@Html.TextAreaFor(m=>m.Remark)</td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

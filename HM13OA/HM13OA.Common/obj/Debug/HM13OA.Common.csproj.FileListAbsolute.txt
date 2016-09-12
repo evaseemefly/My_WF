@@ -1,0 +1,9 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\bin\Debug\HM13OA.Common.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\bin\Debug\HM13OA.Common.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\obj\Debug\HM13OA.Common.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\obj\Debug\HM13OA.Common.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\obj\Debug\HM13OA.Common.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\bin\Debug\Commons.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\bin\Debug\log4net.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Common\bin\Debug\Memcached.ClientLibrary.dll

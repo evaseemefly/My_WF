@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+@using lshOA.UI.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <form method="get" action="/Search/SearchContent">
+            <input type="text" name="txtSearchContent" style="width:400px" />
+            <input type="submit" value="搜索" name="btnSearch" />
+            <input type="submit" value="创建索引库" name="btnCreate" />
+        </form>
+        <hr />
+        @if (ViewData["searchList"] != null)
+        {
+            <dl>
+                @foreach (var item in (List<SearchResultViewModel>)ViewData["searchList"])
+                {
+                    <dt><a href="@item.Url">@item.Title</a></dt>
+                    <dd >@MvcHtmlString.Create(item.ContentDescription)</dd>
+                }
+            </dl>
+        }
+    </div>
+</body>
+</html>

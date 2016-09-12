@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">    <!--这里必须要加上-->
+  <object type="lshOA.BLL.UserInfoBLL, lshOA.BLL" singleton="false" name="userInfoService" >    
+  </object>
+  <object type="lshOA.BLL.RoleInfoBLL, lshOA.BLL" singleton="false" name="roleInfoService" >
+  </object>
+  <object type="lshOA.BLL.ActionInfoBLL, lshOA.BLL" singleton="false" name="actionInfoService" >
+  </object>
+  <object type="lshOA.BLL.R_UserInfo_ActionInfoBLL, lshOA.BLL" singleton="false" name="r_UserInfo_ActionInfoService" >
+  </object>
+  <object type="lshOA.BLL.BookBLL, lshOA.BLL" singleton="false" name="bookService" >
+  </object>
+  <object type="lshOA.BLL.WF_TempBLL, lshOA.BLL" singleton="false" name="wf_TempService" >
+  </object>
+</objects>
+

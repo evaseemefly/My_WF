@@ -1,0 +1,10 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\t9_MongodbTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\t9_MongodbTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\t9_MongodbTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\MongoDB.Bson.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\MongoDB.Driver.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\MongoDB.Bson.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\bin\Debug\MongoDB.Driver.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\obj\Debug\t9_MongodbTest.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\obj\Debug\t9_MongodbTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t9_MongodbTest\obj\Debug\t9_MongodbTest.pdb

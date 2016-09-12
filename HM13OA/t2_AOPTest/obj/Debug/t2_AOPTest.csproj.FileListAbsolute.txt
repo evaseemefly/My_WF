@@ -1,0 +1,11 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\t2_AOPTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\t2_AOPTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\t2_AOPTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\Spring.Aop.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\Spring.Core.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\Common.Logging.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\Spring.Aop.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\bin\Debug\Spring.Core.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\obj\Debug\t2_AOPTest.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\obj\Debug\t2_AOPTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t2_AOPTest\obj\Debug\t2_AOPTest.pdb

@@ -1,0 +1,141 @@
+﻿@model IQueryable<HM13OA.Model.WorkFlowModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/easyUI/icon.css" rel="stylesheet" />
+    <link href="~/Content/easyUI/default/easyui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.easyui.min.js"></script>
+    <style>
+        li {
+            float: left;
+            padding-right: 5px;
+            list-style: none;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#reinputDiv').hide();
+
+            LoadList();
+        });
+
+        function LoadList() {
+            $("#list1").datagrid({
+                url: '@Url.Action("GetPageList","Workflow")',
+                title: '已发起流程列表',
+                width: 500,
+                height: 350,
+                fitColumns: true,
+                idField: 'InstanceId',
+                loadMsg: '正在加载信息...',
+                pagination: true,
+                singleSelect: true,
+                pageSize: 10,
+                pageNumber: 1,
+                pageList: [10, 20, 30],
+                queryParams: {},
+                columns: [[
+                    { field: 'ck', checkbox: true, align: 'left', width: 50 },
+                    { field: 'InstanceId', title: '编号', width: 80 },
+                    { field: 'InstanceTitle', title: '标题', width: 120 },
+                    {
+                        field: 'InstanceState', title: '状态', width: 120,
+                        formatter: function (value, row, index) {
+                            var status = '';
+                            if (value == '1') {
+                                status = '待审批';
+                            }else if (value == '2') {
+                                status = '驳回';
+                            }else if (value == '3') {
+                                status = '结束';
+                            }
+                            return status;
+                        }
+                    }
+                ]],
+                toolbar: [{
+                    id: 'toolbarReInput',
+                    text: '重新申请',
+                    iconCls: 'icon-add',
+                    handler: ReInputShow
+                }]
+            });
+        }
+
+        function ReInputShow() {
+            var item = $('#list1').datagrid('getSelected');
+            if (item == null) {
+                $.messager.alert('警告', '请选择一项后再进行重新申请');
+                return;
+            }
+            if (item['InstanceState'] != 2) {
+                $.messager.alert('警告','此条数据不需要重新申请');
+                return;
+            }
+
+            var id = item['InstanceId'];
+
+            $('#reinputDiv iframe').attr('src', '@Url.Action("BaoXiaoReinput","Workflow")?id1='+id);
+            $('#reinputDiv').show();
+            
+            $("#reinputDiv").dialog({
+                title: "重新发起申请",
+                collapsible: true,
+                minimizable: true,
+                maximizable: true,
+                resizable: true,
+                modal: true,
+                height: 400,
+
+                buttons: [{
+                    text: "发起",
+                    iconCls: "icon-add",
+                    handler: function () {
+                        $('#reinputDiv iframe')[0].contentWindow.ReInputSubmit(0);
+                    }
+                }, {
+                    text: "取消",
+                    iconCls: "icon-cancel",
+                    handler: function () {
+                        $("#reinputDiv").dialog("close");
+                    }
+                }]
+            });
+        }
+
+        function ReInputAfter(msg) {
+            if (msg == 'ok') {
+                $("#reinputDiv").dialog("close");
+
+                $('#list1').datagrid('reload');
+            } else {
+                $.messager.alert('提示','重新申请失败，请稍候重试');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@Html.ActionLink(item.ModelTitle,item.ActionName,item.ControllerName)</li>
+            }
+        </ul><br/>
+        <hr/>
+        <table id="list1"></table>
+    </div>
+    
+    <div id="reinputDiv">
+        <iframe frameborder="0" width="100%" height="100%" src="/Error.html"></iframe>
+    </div>
+</body>
+</html>

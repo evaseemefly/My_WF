@@ -1,0 +1,38 @@
+﻿@model IQueryable<HM13OA.Model.UserInfo>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("添加","Add","UserInfo")
+        <br/>
+        <table border="1">
+            <thead>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserId</td>
+                    <td>@item.UserName</td>
+                    <td>@(item.UserGender?"女":"男")</td>
+                    <td>@item.UserAge</td>
+                    <td>@Html.ActionLink("编辑","Edit",new {id=item.UserId})</td>
+                </tr>//c/a/id
+            }
+        </table>
+    </div>
+</body>
+</html>

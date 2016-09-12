@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using HM13OA.IService;
+using HM13OA.UI.Models;
+
+namespace HM13OA.UI.Controllers
+{
+    public class HomeController :MyBaseController// Controller
+    {
+        public IActionInfoService ActionInfoService { get; set; }
+
+        public ActionResult Index()
+        {
+            ViewData.Model=ActionInfoService
+                .GetList(a => (a.IsDelete == false) && (a.IsMenu == true))
+                .Select(a=>new MenuViewModel()
+                {
+                  ActionTitle = a.ActionTitle,
+                   ActionName = a.ActionName,
+                   ControllerName = a.ControllerName,
+                   MenuIcon = a.MenuIcon
+                }).ToList();
+
+
+            return View();
+        }
+
+    }
+}

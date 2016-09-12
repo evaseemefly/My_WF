@@ -1,0 +1,10 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\HM13OA.IService.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\HM13OA.IService.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\HM13OA.Model.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\EntityFramework.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\HM13OA.Model.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\EntityFramework.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\obj\Debug\HM13OA.IService.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\obj\Debug\HM13OA.IService.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.IService\obj\Debug\HM13OA.IService.pdb

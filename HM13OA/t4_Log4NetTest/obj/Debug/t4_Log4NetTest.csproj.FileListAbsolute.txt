@@ -1,0 +1,8 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\bin\Debug\t4_Log4NetTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\bin\Debug\t4_Log4NetTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\bin\Debug\t4_Log4NetTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\bin\Debug\log4net_log.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\bin\Debug\log4net_log.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\obj\Debug\t4_Log4NetTest.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\obj\Debug\t4_Log4NetTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t4_Log4NetTest\obj\Debug\t4_Log4NetTest.pdb

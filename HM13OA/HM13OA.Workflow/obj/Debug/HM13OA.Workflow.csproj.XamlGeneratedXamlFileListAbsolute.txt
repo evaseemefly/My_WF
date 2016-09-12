@@ -1,0 +1,2 @@
+obj\Debug\Baoxiao.g.xaml
+obj\Debug\HM13OA.Workflow_Baoxiao_BeforeInitializeComponentHelper.txt

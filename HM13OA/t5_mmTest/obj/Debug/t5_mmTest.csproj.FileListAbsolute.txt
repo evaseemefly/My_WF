@@ -1,0 +1,10 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\t5_mmTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\t5_mmTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\t5_mmTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\Commons.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\log4net.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\bin\Debug\Memcached.ClientLibrary.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\obj\Debug\t5_mmTest.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\obj\Debug\t5_mmTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t5_mmTest\obj\Debug\t5_mmTest.pdb

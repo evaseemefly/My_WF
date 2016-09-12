@@ -1,0 +1,23 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HM13OA.IDAL
+{
+    public partial interface IDbSession
+    {
+<#
+    MetadataLoader loader=new MetadataLoader(this);
+    EdmItemCollection collection= loader.CreateEdmItemCollection("HM13OA.Model/HM13OA.edmx");
+    foreach(EntityType item in collection.GetItems<EntityType>())
+    {
+#>
+		I<#=item.Name#>Dal Get<#=item.Name#>Dal();
+<#}#>
+	}
+}

@@ -1,0 +1,5 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t7_t\bin\Debug\t7_t.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t7_t\bin\Debug\t7_t.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t7_t\obj\Debug\t7_t.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t7_t\obj\Debug\t7_t.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t7_t\obj\Debug\t7_t.pdb

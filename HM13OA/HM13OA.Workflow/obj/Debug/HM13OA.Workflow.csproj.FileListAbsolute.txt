@@ -1,0 +1,17 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\bin\Debug\HM13OA.Workflow.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\bin\Debug\HM13OA.Workflow.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\Baoxiao.g.xaml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow_Baoxiao_BeforeInitializeComponentHelper.txt
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\_HM13OA.Workflow.g.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\Baoxiao.g.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow_Baoxiao_BeforeInitializeComponentHelper.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow.csproj.XamlGeneratedCodeFileListAbsolute.txt
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow.csproj.XamlGeneratedXamlFileListAbsolute.txt
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\AC2C1ABA-CCF6-44D4-8127-588FD4D0A860-DeferredValidationErrors.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow_Baoxiao_CompiledExpressionRoot.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\InProcessTempFiles\Baoxiao.g.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\InProcessTempFiles\Baoxiao.g.xaml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\InProcessTempFiles\_HM13OA.Workflow.g.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\HM13OA.Workflow\obj\Debug\HM13OA.Workflow.csprojResolveAssemblyReference.cache

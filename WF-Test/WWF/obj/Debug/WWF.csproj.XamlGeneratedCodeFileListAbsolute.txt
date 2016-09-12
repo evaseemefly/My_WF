@@ -1,0 +1,4 @@
+obj\Debug\_WWF.g.cs
+obj\Debug\Activity1.g.cs
+obj\Debug\WWF_Activity1_BeforeInitializeComponentHelper.cs
+D:\02编程\2016年\01协同开发\WF\WWF\obj\Debug\WWF_Activity1_CompiledExpressionRoot.cs

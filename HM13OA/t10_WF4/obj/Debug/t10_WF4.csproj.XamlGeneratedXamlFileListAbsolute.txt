@@ -1,0 +1,2 @@
+obj\Debug\BaoxiaoStateMachine.g.xaml
+obj\Debug\t10_WF4_BaoxiaoStateMachine_BeforeInitializeComponentHelper.txt

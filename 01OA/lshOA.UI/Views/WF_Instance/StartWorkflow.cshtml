@@ -1,0 +1,91 @@
+﻿@model lshOA.MODEL.WF_Instance
+
+@{
+    Layout = null;
+}
+@using lshOA.MODEL
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StartWorkflow</title>
+    <script src="../../Content/KinderEditor/kindeditor-min.js"></script>
+    <link rel="stylesheet" href="../../Content/KinderEditor/themes/default/default.css" />
+    <link rel="stylesheet" href="../../Content/KinderEditor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="../../Content/KinderEditor/kindeditor.js"></script>
+    <script charset="utf-8" src="../../Content/KinderEditor/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="../../Content/KinderEditor/plugins/code/prettify.js"></script>
+    <script>
+//注意编辑器的使用
+        KindEditor.ready(function (K) {
+            var editor1 = K.create('#TempDescription', {
+                cssPath: '../../Content/KinderEditor/plugins/code/prettify.css',
+                uploadJson: '../../Content/KinderEditor/asp.net/upload_json.ashx',
+                fileManagerJson:
+
+'../../Content/KinderEditor/asp.net/file_manager_json.ashx',
+                allowFileManager: true,
+                afterCreate: function () {
+                    var self = this;
+                    //self.sync();//把富文本编辑器的内容放到  文本域里面去。
+                }
+            });
+            var editor2 = K.create('#TempForm', {
+                cssPath: '../../Content/KinderEditor/plugins/code/prettify.css',
+                uploadJson: '../../Content/KinderEditor/asp.net/upload_json.ashx',
+                fileManagerJson:
+
+'../../Content/KinderEditor/asp.net/file_manager_json.ashx',
+                allowFileManager: true,
+                afterCreate: function () {
+                    var self = this;
+                    //self.sync();//把富文本编辑器的内容放到  文本域里面去。
+                }
+            });
+
+            prettyPrint();
+        });
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        lshOA.MODEL.WF_Temp currentTemp = (WF_Temp)ViewBag.Temp;
+        <input type="hidden"name="id" value="@currentTemp" />
+        <span>发起 @currentTemp.TempName 流程</span>
+        <table>
+            <tr>
+                <td>流程标题</td>
+                <td><input type="text" name="Instance"/></td>
+            </tr>
+            <tr>
+                <td>紧急程度</td>
+                <td>
+                    <select name="Level">
+                        <option value="0">一般</option>
+                        <option value="1">紧急</option>
+                        <option value="2">速办</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>申请内容</td>
+                <td>
+                    <textarea id="TempDescription" cols="100" rows="8" style="width:700px;height:200px;visibility:hidden;" name="TempForm">
+                        @currentTemp.TempForm
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>流转到</td>
+                <td>@Html.DropDownList("FlowTo")</td>
+            </tr>
+        </table>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

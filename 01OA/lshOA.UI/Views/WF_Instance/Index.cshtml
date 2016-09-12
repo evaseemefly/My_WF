@@ -1,0 +1,89 @@
+﻿@model IEnumerable<lshOA.MODEL.WF_Temp>
+
+@{
+   ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TempName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModfiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DelFlag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempForm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TempStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubBy)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModfiedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DelFlag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempForm)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TempStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubBy)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+               @Html.ActionLink("查看", "StartWorkflow", new { id = item.ID })|
+                @Html.ActionLink("跳转至本控制器","StartWorkflow","WF_Instance",new { id=item.ID},null)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

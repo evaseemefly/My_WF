@@ -1,0 +1,17 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\bin\Debug\t10_WF3.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\bin\Debug\t10_WF3.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\bin\Debug\t10_WF3.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\BaoxiaoFlowChart.g.xaml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3_BaoxiaoFlowChart_BeforeInitializeComponentHelper.txt
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\_t10_WF3.g.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\BaoxiaoFlowChart.g.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3_BaoxiaoFlowChart_BeforeInitializeComponentHelper.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.csproj.XamlGeneratedCodeFileListAbsolute.txt
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.csproj.XamlGeneratedXamlFileListAbsolute.txt
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\AC2C1ABA-CCF6-44D4-8127-588FD4D0A860-DeferredValidationErrors.xml
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.Properties.Resources.resources
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.csproj.GenerateResource.Cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3_BaoxiaoFlowChart_CompiledExpressionRoot.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF3\obj\Debug\t10_WF3.Form1.resources

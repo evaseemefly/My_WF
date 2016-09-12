@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace HM13OA.UI.Controllers
+{
+    public class MyBaseController : Controller
+    {
+        protected override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            return;
+            //base.OnAuthorization(filterContext);
+            if (Session["UserLogin"] == null)
+            {
+                filterContext.Result=new RedirectResult(Url.Action("Index","UserLogin"));
+            }
+        }
+    }
+}

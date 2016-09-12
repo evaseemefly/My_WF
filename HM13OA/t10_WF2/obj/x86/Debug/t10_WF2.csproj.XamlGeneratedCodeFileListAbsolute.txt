@@ -1,0 +1,7 @@
+obj\x86\Debug\_t10_WF2.g.cs
+obj\x86\Debug\BaoxiaoFlowChart.g.cs
+obj\x86\Debug\BaoxiaoStateMachine.g.cs
+obj\x86\Debug\t10_WF2_BaoxiaoFlowChart_BeforeInitializeComponentHelper.cs
+obj\x86\Debug\t10_WF2_BaoxiaoStateMachine_BeforeInitializeComponentHelper.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF2\obj\x86\Debug\t10_WF2_BaoxiaoFlowChart_CompiledExpressionRoot.cs
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t10_WF2\obj\x86\Debug\t10_WF2_BaoxiaoStateMachine_CompiledExpressionRoot.cs

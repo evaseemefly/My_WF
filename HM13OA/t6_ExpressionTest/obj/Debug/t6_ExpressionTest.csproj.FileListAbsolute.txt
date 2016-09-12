@@ -1,0 +1,5 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t6_ExpressionTest\bin\Debug\t6_ExpressionTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t6_ExpressionTest\bin\Debug\t6_ExpressionTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t6_ExpressionTest\bin\Debug\t6_ExpressionTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t6_ExpressionTest\obj\Debug\t6_ExpressionTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t6_ExpressionTest\obj\Debug\t6_ExpressionTest.pdb

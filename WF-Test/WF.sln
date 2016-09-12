@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WF", "WF\WF.csproj", "{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WWF", "WWF\WWF.csproj", "{58072E38-FEAF-4E34-8893-CEDACE694EEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}.Debug|x86.ActiveCfg = Debug|x86
+		{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}.Debug|x86.Build.0 = Debug|x86
+		{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}.Release|Any CPU.ActiveCfg = Release|x86
+		{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}.Release|x86.ActiveCfg = Release|x86
+		{239B7DD7-C4C0-4466-9C4C-341C4A4FAC9D}.Release|x86.Build.0 = Release|x86
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Debug|x86.Build.0 = Debug|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Release|x86.ActiveCfg = Release|Any CPU
+		{58072E38-FEAF-4E34-8893-CEDACE694EEC}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

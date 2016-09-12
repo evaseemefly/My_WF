@@ -1,0 +1,2 @@
+obj\Debug\BaoxiaoFlowChart.g.xaml
+obj\Debug\t10_WF3_BaoxiaoFlowChart_BeforeInitializeComponentHelper.txt

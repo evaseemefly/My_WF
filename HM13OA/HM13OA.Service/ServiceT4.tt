@@ -1,0 +1,32 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs" #>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using HM13OA.DalFactory;
+using HM13OA.IDAL;
+using HM13OA.IService;
+using HM13OA.Model;
+
+namespace HM13OA.Service
+{
+        
+<#
+    MetadataLoader loader=new MetadataLoader(this);
+    EdmItemCollection collection= loader.CreateEdmItemCollection("HM13OA.Model/HM13OA.edmx");
+    foreach(EntityType item in collection.GetItems<EntityType>())
+    {
+#>
+    public partial class <#=item.Name#>Service:BaseService<<#=item.Name#>>,I<#=item.Name#>Service
+    {
+        protected override IBaseDal<<#=item.Name#>> GetDal()
+        {
+            return dbSession.Get<#=item.Name#>Dal();
+        }
+	}
+<#}#>
+}

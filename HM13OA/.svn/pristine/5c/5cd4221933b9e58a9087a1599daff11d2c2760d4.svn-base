@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\HM13OA.DAL\packages.config" />
+  <repository path="..\HM13OA.Model\packages.config" />
+  <repository path="..\HM13OA.UI\packages.config" />
+</repositories>

@@ -1,0 +1,9 @@
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\bin\Debug\t8_RedisTest.exe.config
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\bin\Debug\t8_RedisTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\bin\Debug\t8_RedisTest.pdb
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\bin\Debug\ServiceStack.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\bin\Debug\ServiceStack.Interfaces.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\bin\Debug\ServiceStack.ServiceInterface.dll
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\obj\Debug\t8_RedisTest.csprojResolveAssemblyReference.cache
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\obj\Debug\t8_RedisTest.exe
+C:\Users\q1\Desktop\2014-7-15\HM13OA\t8_RedisTest\obj\Debug\t8_RedisTest.pdb

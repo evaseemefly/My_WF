@@ -1,0 +1,58 @@
+﻿@model List<HM13OA.Model.WorkflowStep>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaoXiaoReinput</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function ReInputAfter(msg) {
+            window.parent.ReInputAfter(msg);
+        }
+
+        function ReInputSubmit() {
+            $('form').submit();
+        }
+    </script>
+</head>
+<body>
+    <div>
+        @foreach (var item in Model)
+        {
+            @item.Remark<br/>
+        }
+        <hr/>
+        @using (Ajax.BeginForm("BaoxiaoReinput", "Workflow", new AjaxOptions()
+        {
+            OnSuccess = "ReInputAfter"
+        }))
+        {
+            <table border="1">
+                <input type="hidden" name="InstanceId" value="@ViewBag.InstanceId"/>
+                <tr>
+                    <td>事由：</td>
+                    <td><input type="text" name="Reason"/></td>
+                </tr>
+                <tr>
+                    <td>金额：</td>
+                    <td><input type="text" name="Money"/></td>
+                </tr>
+                <tr>
+                    <td>下一审批人：</td>
+                    <td><input type="text" name="NextId"/></td>
+                </tr>
+                <tr>
+                    <td>备注：</td>
+                    <td><input type="text" name="Remark"/></td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

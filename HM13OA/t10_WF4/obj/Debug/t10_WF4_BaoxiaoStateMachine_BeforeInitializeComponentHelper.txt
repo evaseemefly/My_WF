@@ -1,0 +1,2 @@
+BaoxiaoStateMachine.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

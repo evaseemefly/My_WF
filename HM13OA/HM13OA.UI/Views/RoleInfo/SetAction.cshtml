@@ -1,0 +1,62 @@
+﻿@using HM13OA.Model
+@model List<HM13OA.Model.ActionInfo>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SetAction</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script>
+        function SetActionDeal() {
+            //获取所有选中的项
+            var ids = '';
+            $(':checked').each(function() {
+                ids += $(this).val() + ',';
+            });
+            if (ids == '') {
+                alert('请选择权限后再设置');
+                return;
+            }
+            ids = ids.substring(0, ids.length - 1);
+
+            var rid1 = $('#RoleId').val();
+            
+            //向服务器端发请求
+            $.post('@Url.Action("SetAction","RoleInfo")', {
+                    rid: rid1,
+                    aids: ids
+                }, function(msg) {
+                    window.parent.SetActionAfter(msg);
+                });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        @{
+            var roleInfo = ViewBag.RoleInfo as RoleInfo;
+           <input  type="hidden" name="RoleId" id="RoleId" value="@roleInfo.RoleId"/><br/>
+            int counter = Model.Count;
+            for (int i = 0; i < counter; i++)
+            {
+                <input type="checkbox" value="@Model[i].ActionId"
+                    
+                    @if (roleInfo.ActionInfo.Contains(Model[i]))
+                    {
+                        @Html.Raw("checked='checked'")
+                    }
+                    
+                    />@Model[i].ActionTitle
+                if ((i+1)%4 == 0)
+                {
+                    <br/>
+                }
+            }
+        }    </div>
+</body>
+</html>

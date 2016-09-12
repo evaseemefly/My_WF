@@ -1,0 +1,2 @@
+VacateActivity.g.xaml
+XamlStaticHelperNamespace._XamlStaticHelper

@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using HM13OA.Common;
+using HM13OA.UI.Models;
+
+namespace HM13OA.UI.Controllers
+{
+    public class MyBaseController : Controller
+    {
+        protected override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            //return;
+            //base.OnAuthorization(filterContext);
+
+            //去session，使用分布式缓存完成登录
+            //if (Session["UserLogin"] == null)
+            //{
+            //    filterContext.Result=new RedirectResult(Url.Action("Index","UserLogin"));
+            //}
+
+            //1、获取客户端标识
+            if (Request.Cookies.Get("loginId") == null)
+            {
+                filterContext.Result = new RedirectResult(Url.Action("Index", "UserLogin"));
+                return;
+            }
+            string key=Request.Cookies.Get("loginId").Value;
+            //2、与分布式缓存进行通信，获取对象
+            MmHelper helper=new MmHelper();
+            UserInfoViewModel userInfoViewModel = helper.Get(key) as UserInfoViewModel;
+            //3、判断是否登录
+            if (userInfoViewModel == null)
+            {
+                filterContext.Result = new RedirectResult(Url.Action("Index", "UserLogin"));
+                return;
+            }
+            //4、设置超时滑动时间
+            helper.Set(key, userInfoViewModel, DateTime.Now.AddMinutes(20));
+
+        }
+    }
+}

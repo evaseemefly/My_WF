@@ -1,0 +1,57 @@
+﻿@model HM13OA.UI.Models.BaoxiaoInputFormModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Baoxiao</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function BaoxiaoAfter(msg) {
+            if (msg == "ok") {
+                alert('申请成功，请等待审批');
+            } else {
+                alert('申请失败，请稍候重试');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("Baoxiao","Workflow",new AjaxOptions()
+        {
+            OnSuccess = "BaoxiaoAfter"
+        }))
+        {
+            <table border="1">
+                <tr>
+                    <td>标题：</td>
+                    <td>@Html.TextBoxFor(m=>m.BXTitle)</td>
+                </tr>
+                <tr>
+                    <td>事由：</td>
+                    <td>@Html.TextBoxFor(m=>m.Reason)</td>
+                </tr>
+                <tr>
+                    <td>金额：</td>
+                    <td>@Html.TextBoxFor(m=>m.Money)</td>
+                </tr>
+                <tr>
+                    <td>下一审批人：</td>
+                    <td>@Html.TextBoxFor(m=>m.NextId)</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" name="tj" value="提交申请"/>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

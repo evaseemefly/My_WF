@@ -1,0 +1,12 @@
+obj\x86\Debug\_WF.g.cs
+obj\x86\Debug\Workflow1.g.cs
+obj\x86\Debug\Activity.g.cs
+obj\x86\Debug\MoneyActivity.g.cs
+obj\x86\Debug\VacateActivity.g.cs
+obj\x86\Debug\WF_Workflow1_BeforeInitializeComponentHelper.cs
+obj\x86\Debug\WF_Activity_BeforeInitializeComponentHelper.cs
+obj\x86\Debug\WF_MoneyActivity_BeforeInitializeComponentHelper.cs
+obj\x86\Debug\WF_VacateActivity_BeforeInitializeComponentHelper.cs
+D:\02编程\2016年\01协同开发\WF\WF\obj\x86\Debug\WF_Activity_CompiledExpressionRoot.cs
+D:\02编程\2016年\01协同开发\WF\WF\obj\x86\Debug\WF_MoneyActivity_CompiledExpressionRoot.cs
+D:\02编程\2016年\01协同开发\WF\WF\obj\x86\Debug\WF_VacateActivity_CompiledExpressionRoot.cs

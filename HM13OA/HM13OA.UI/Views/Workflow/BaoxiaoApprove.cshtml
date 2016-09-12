@@ -1,0 +1,46 @@
+﻿@model HM13OA.Model.WorkflowStep
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BaoxiaoApprove</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function ApproveAfter(msg) {
+            if (msg == "ok") {
+                alert('审批完成，请等待下一步处理');
+            } else {
+                alert('审批失败，请稍候重试');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("BaoxiaoApprove", "Workflow", new AjaxOptions()
+        {
+            OnSuccess = "ApproveAfter"
+        }))
+        {
+            <span>申请人：@ViewBag.SubUserName</span><br/>
+            @Model.Remark<br/>
+            <input type="hidden" name="InstanceId" value="@Model.InstanceId"/>
+            <input type="hidden" name="StepId" value="@Model.StepId"/>
+            <hr/>
+            <span>审批意见： </span><select name="BXApprove">
+                <option value="true">同意</option>
+                <option value="false">驳回</option>
+                               </select><br/>
+            <span>备注：</span><input type="text" name="Remark"/><br/>
+            <span>下一审批人：</span><input type="text" name="NextId" value="0"/><br/>
+           <input type="submit" value="审批"/>
+        }
+    </div>
+</body>
+</html>

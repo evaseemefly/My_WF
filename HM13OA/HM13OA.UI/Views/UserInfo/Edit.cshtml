@@ -1,0 +1,67 @@
+﻿@model HM13OA.Model.UserInfo
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        function EditAfter(msg) {
+            if (msg == "ok") {
+                location.href = '@Url.Action("Index","UserInfo")';
+            } else {
+                alert("修改失败，请稍候重试");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        @using (Ajax.BeginForm("Edit", new AjaxOptions()
+        {
+            OnSuccess = "EditAfter"
+        }))
+        {
+            <table border="1">
+                <tr>
+                    <td>编号：</td>
+                    <td>
+                        @Model.UserId
+                        @Html.HiddenFor(u=>u.UserId)
+                    </td>
+                </tr>
+                <tr>
+                    <td>姓名：</td>
+                    <td>@Html.TextBoxFor(u=>u.UserName)</td>
+                </tr>
+                <tr>
+                    <td>性别：</td>
+                    <td>
+                        <input type="radio" name="UserGender" value="false"
+                            @Html.Raw(Model.UserGender?"":"checked='checked'")
+                            />男
+                        <input type="radio" name="UserGender" value="true"
+                             @(Model.UserGender?"checked='checked'":"")
+                            />女
+                    </td>
+                </tr>
+                <tr>
+                    <td>年龄：</td>
+                    <td>@Html.TextBoxFor(u=>u.UserAge)</td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="修改"/>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

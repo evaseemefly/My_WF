@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+using HM13OA.Common;
+using HM13OA.DalFactory;
+using HM13OA.IDAL;
+using HM13OA.IService;
+using HM13OA.Model;
+
+namespace HM13OA.Service
+{
+    public partial class UserInfoService//:BaseService<UserInfo>,IUserInfoService
+    {
+        public bool Login(UserInfo userInfo,out int id1)
+        {
+            string name1 = userInfo.UserName;
+            string pwd1 = MD5Helper.EncryptString(userInfo.UserPwd);
+            var result = curDal.GetList(u => (u.UserName.Equals(name1)) && (u.UserPwd.Equals(pwd1)));
+            var user1 = result.FirstOrDefault();
+
+            id1 = 0;
+            if (user1 != null)
+            {
+                id1 = user1.UserId;
+            }
+
+            return user1!=null;
+        }
+
+        public bool SetRole(int uid, string rids)
+        {
+            List<int> list1=new List<int>();
+            string[] list2 = rids.Split(',');
+            foreach (var item in list2)
+            {
+                list1.Add(int.Parse(item));
+            }
+
+            ((IUserInfoDal) curDal).SetRole(uid, list1.ToArray());
+
+            return dbSession.SaveChanges() > 0;
+        }
+
+        public bool SetAction(int uid, int aid, int allow)
+        {
+            ((IUserInfoDal) curDal).SetAction(uid, aid, allow);
+
+            return dbSession.SaveChanges() > 0;
+        }
+
+        //protected override IBaseDal<UserInfo> GetDal()
+        //{
+        //    return dbSession.GetUserInfoDal();
+        //}
+
+
+        //UserInfoDal userInfoDal=new UserInfoDal();
+        //private IUserInfoDal userInfoDal = DalFactory.DalFactory1.GetUserInfoDal();
+        //private IUserInfoDal userInfoDal = DalFactory1.GetUserInfoDal2();
+        //private IUserInfoDal userInfoDal;
+        //private IDbSession dbSession;
+
+        //public UserInfoService()
+        //{
+        //    //dbSession=new DbSession();
+        //    dbSession = DbSessionFactory.GetDbSession();
+        //    userInfoDal = dbSession.GetUserInfoDal();
+        //}
+       
+
+        ////增加
+        //public bool Add(UserInfo userInfo)
+        //{
+        //    userInfoDal.Add(userInfo);
+        //    return dbSession.SaveChanges() > 0;
+        //}
+
+        ////修改
+        //public bool Edit(UserInfo userInfo)
+        //{
+        //    userInfoDal.Edit(userInfo);
+        //    return dbSession.SaveChanges() > 0;
+        //}
+
+        ////删除
+
+        ////查询
+        //public UserInfo GetById(int id)
+        //{
+        //    return userInfoDal.GetById(id);
+        //}
+
+        //public IQueryable<UserInfo> GetList(Expression<Func<UserInfo, bool>> whereLambda)
+        //{
+        //    return userInfoDal.GetList(whereLambda);
+        //} 
+    }
+}
